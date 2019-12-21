@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-xl-10 col-lg-12 col-md-9">
+      <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card-body p-0">
+          <div class="row" style="text-align: center;justify-content: center;align-items: center;">
+            <div class="col-lg-6">
+              <div class="p-5">
+                <h1 class="h4 text-gray-900 mb-4">Create Account</h1>
+                  <form [formGroup]="myForm">
+                    <div class="example-container">
+                    <mat-form-field>
+                      <input matInput formControlName="username" placeholder="UserName" required>
+                      <mat-error *ngIf="myForm.hasError('required','username')">
+                        Please enter UserName
+                      </mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                      <input matInput formControlName="email" placeholder="Email" required>
+                      <mat-error *ngIf="myForm.hasError('required','email')">
+                        Please enter email
+                      </mat-error>
+                      <mat-error *ngIf="myForm.hasError('email','email')">
+                        Please enter a valid email
+                      </mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                      <input matInput formControlName="password" required placeholder="Password"
+                        [type]="hide ? 'password' : 'text'">
+                      <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                      <mat-error *ngIf="myForm.hasError('required', 'password')">
+                        Please enter your newpassword
+                      </mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                      <input matInput formControlName="confirmPassword" [errorStateMatcher]="matcher"
+                        placeholder="Re-enter Password" [type]="hide ? 'password' : 'text'">
+                      <mat-icon matSuffix (click)="hiderepass = !hiderepass">
+                        {{hiderepass ? 'visibility_off' : 'visibility'}}</mat-icon>
+                      <mat-error *ngIf="myForm.hasError('notSame')">
+                        Passwords do not match
+                      </mat-error>
+                    </mat-form-field>
+                </div>
+              </form>
+                <button style="background-color: black;color: white" (click)="register()"
+                  class="btn btn-user btn-block">
+                  Register
+                </button>
+                <br>
+                <p>Already have an account?<button routerLink="" style="padding-bottom: 10px"
+                    class="btn btn-link">Sign in</button></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

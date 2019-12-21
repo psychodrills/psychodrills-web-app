@@ -1,0 +1,22 @@
+<div class="container">
+    <h3>Login</h3>
+    <br>
+    <div class="example-container">
+            <mat-form-field appearance="outline">
+                <mat-label>UserName</mat-label>
+                <input matInput [(ngModel)]="user.email">
+              </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Password</mat-label>
+                <input matInput [(ngModel)]="user.password" [type]="hide ? 'password' : 'text'">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+              </mat-form-field>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-6">
+            <button type="button" class="btn btn-primary" (click)="authenticate()">Login</button>
+        </div>
+    </div>
+</div>
